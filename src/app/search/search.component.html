@@ -9,6 +9,6 @@
     </div>
   </div>
   <div class="address-detail container">
-    <app-detail></app-detail>
+    <app-detail *ngIf="addressService.selectedFeature" [feature]="addressService.selectedFeature"></app-detail>
   </div>
 </div>

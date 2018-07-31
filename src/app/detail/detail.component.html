@@ -1,3 +1,44 @@
-<p>
-  detail works!
-</p>
+<div *ngIf="feature" class="container">
+  <h3>{{feature.attributes.ADDRESS}}</h3>
+  <div class="address-attributes container">
+    <h4>Address</h4>
+    <div class="address">
+      <div>{{feature.attributes.ADDRESS}}</div>
+      <div>{{feature.attributes.CITY_POSTAL}}, CO {{feature.attributes.ZIP}}</div>
+    </div>
+  </div>
+  <div class="elections">
+    <div class="municipal">
+      <h4>Municipal Elections</h4>
+      <div>Municipality: {{feature.attributes.CITY_MUNICIPAL}}</div>
+      <div *ngIf="feature.attributes.CITY_MUNICIPAL != 'UNINCORPORATED'">
+        <div *ngIf="feature.attributes.CITYPRECINCT != '00'">City Precinct: {{feature.attributes.CITYPRECINCT}}</div>
+        <div *ngIf="feature.attributes.CITYWARD != '00'">City Ward: {{feature.attributes.CITYWARD}}</div>
+      </div>
+    </div>
+    <div class="county">
+      <h4>County Elections</h4>
+      <div>County Precinct: {{feature.attributes.COUNTYPRECINCT}}</div>
+      <div>County Commissioner (District {{feature.attributes.COMM_DISTRICT}}): {{feature.attributes.COMM_NAME}}
+      </div>
+    </div>
+    <div class="state">
+      <h4>State Elections</h4>
+      <div>State House Representative (District {{feature.attributes.STHSE_DISTRICT}}): {{feature.attributes.STHSE_NAME}}
+      </div>
+      <div>State Senator (District {{feature.attributes.STSEN_DISTRICT}}): {{feature.attributes.STSEN_NAME}}
+      </div>
+    </div>
+    <div class="us">
+      <h4>US Elections</h4>
+      <div>US House Representative (District {{feature.attributes.FDHSE_DISTRICT}}): {{feature.attributes.FDHSE_NAME}}
+      </div>
+    </div>
+  </div>
+  <div class="geographic-coordinates">
+    <h4>Geographic Coordinates</h4>
+    <div>-{{feature.attributes.LONGITUDE | number:'3.3-3'}}&deg;, {{feature.attributes.LATITUDE | number:'2.3-3'}}‌&deg;, {{feature.attributes.ADRELEV}}
+      ft.
+    </div>
+  </div>
+</div>
