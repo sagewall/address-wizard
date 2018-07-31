@@ -1,3 +1,15 @@
-<p>
-  search works!
-</p>
+<div class="container">
+  <div class="search-box container">
+    <label for="search-box">Search by House Number</label>
+    <input #searchBox id="search-box" type="number" (keyup)="search(searchBox.value)" />
+  </div>
+  <div class="results container">
+    <div *ngIf="(featureSet$ | async) as featureSet">
+      <div *ngFor="let feature of featureSet.features">{{feature.attributes.ADDRESS}}</div>
+      <app-results></app-results>
+    </div>
+  </div>
+  <div class="address-detail container">
+    <app-detail></app-detail>
+  </div>
+</div>

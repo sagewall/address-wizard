@@ -4,6 +4,7 @@ import { DetailComponent } from './detail/detail.component';
 import { ResultsComponent } from './results/results.component';
 import { SearchComponent } from './search/search.component';
 import { AddressService } from './address.service';
+import { HttpClientTestingModule } from '@angular/common/http/testing';
 
 describe('AppComponent', () => {
   beforeEach(async(() => {
@@ -16,7 +17,8 @@ describe('AppComponent', () => {
       ],
       providers: [
         AddressService
-      ]
+      ],
+      imports: [HttpClientTestingModule]
     }).compileComponents();
   }));
   it('should create the app', async(() => {
