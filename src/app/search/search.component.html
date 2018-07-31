@@ -5,8 +5,7 @@
   </div>
   <div class="results container">
     <div *ngIf="(featureSet$ | async) as featureSet">
-      <div *ngFor="let feature of featureSet.features">{{feature.attributes.ADDRESS}}</div>
-      <app-results></app-results>
+      <app-results [features]="featureSet.features"></app-results>
     </div>
   </div>
   <div class="address-detail container">

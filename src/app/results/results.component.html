@@ -1,3 +1,6 @@
-<p>
-  results works!
-</p>
+<h3>Select an address</h3>
+<ul *ngIf="features">
+  <li *ngFor="let feature of features; let i = index" [class.active]="i == addressService.selectedIndex">
+    <span (click)="selectFeature(feature, i)">{{feature.attributes.ADDRESS}}</span>
+  </li>
+</ul>
