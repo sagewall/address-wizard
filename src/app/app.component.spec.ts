@@ -1,8 +1,9 @@
-import { TestBed, async } from '@angular/core/testing';
+import { async, TestBed } from '@angular/core/testing';
 import { AppComponent } from './app.component';
-import { SearchComponent } from './search/search.component';
-import { ResultsComponent } from './results/results.component';
 import { DetailComponent } from './detail/detail.component';
+import { ResultsComponent } from './results/results.component';
+import { SearchComponent } from './search/search.component';
+import { AddressService } from './address.service';
 
 describe('AppComponent', () => {
   beforeEach(async(() => {
@@ -13,6 +14,9 @@ describe('AppComponent', () => {
         ResultsComponent,
         DetailComponent
       ],
+      providers: [
+        AddressService
+      ]
     }).compileComponents();
   }));
   it('should create the app', async(() => {
