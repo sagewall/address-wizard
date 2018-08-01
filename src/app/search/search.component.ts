@@ -1,6 +1,6 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
 import { Observable, Subject } from 'rxjs';
-import { debounceTime, distinctUntilChanged, switchMap } from 'rxjs/operators';
+import { debounceTime, distinctUntilChanged, switchMap, tap } from 'rxjs/operators';
 import { AddressService } from '../address.service';
 import esri = __esri;
 
@@ -37,8 +37,8 @@ export class SearchComponent implements OnInit, OnDestroy {
     this.featureSet$ = this.searchTerms.pipe(
       debounceTime(300),
       distinctUntilChanged(),
+      tap(() => this.addressService.clearSelection()),
       switchMap(value => {
-        this.addressService.clearSelection();
         return this.addressService.query(`ADRHSNO=${value}`, '*', 'json', 'ADDRESS');
       })
     );
