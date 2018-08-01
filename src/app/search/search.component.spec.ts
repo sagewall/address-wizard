@@ -3,6 +3,7 @@ import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 import { DetailComponent } from '../detail/detail.component';
 import { ResultsComponent } from '../results/results.component';
 import { SearchComponent } from './search.component';
+import { MapComponent } from '../map/map.component';
 
 describe('SearchComponent', () => {
   let component: SearchComponent;
@@ -13,7 +14,8 @@ describe('SearchComponent', () => {
       declarations: [
         SearchComponent,
         ResultsComponent,
-        DetailComponent
+        DetailComponent,
+        MapComponent
       ],
       imports: [HttpClientTestingModule]
     })

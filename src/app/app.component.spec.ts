@@ -1,10 +1,11 @@
+import { HttpClientTestingModule } from '@angular/common/http/testing';
 import { async, TestBed } from '@angular/core/testing';
+import { AddressService } from './address.service';
 import { AppComponent } from './app.component';
 import { DetailComponent } from './detail/detail.component';
+import { MapComponent } from './map/map.component';
 import { ResultsComponent } from './results/results.component';
 import { SearchComponent } from './search/search.component';
-import { AddressService } from './address.service';
-import { HttpClientTestingModule } from '@angular/common/http/testing';
 
 describe('AppComponent', () => {
   beforeEach(async(() => {
@@ -13,7 +14,8 @@ describe('AppComponent', () => {
         AppComponent,
         SearchComponent,
         ResultsComponent,
-        DetailComponent
+        DetailComponent,
+        MapComponent
       ],
       providers: [
         AddressService
