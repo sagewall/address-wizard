@@ -1,5 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
+import { Observable, of } from 'rxjs';
+import { catchError } from 'rxjs/operators';
 import { Address } from './address';
 import esri = __esri;
 
@@ -34,17 +36,25 @@ export class AddressService {
 
   constructor(private http: HttpClient) { }
 
-  query(where: string, outFields: string, f: string, orderByFields?: string) {
+  query(where: string, outFields: string, f: string, orderByFields?: string): Observable<esri.FeatureSet> {
     let url = `${this.serviceUrl}/query?where=${encodeURIComponent(where)}&outFields=${encodeURIComponent(outFields)}
                                           &f=${encodeURIComponent(f)}`;
     if (orderByFields) {
       url += `&orderByFields=${orderByFields}`;
     }
-    return this.http.get<esri.FeatureSet>(url);
+    return this.http.get<esri.FeatureSet>(url).pipe(
+      catchError(this.handleError<esri.FeatureSet>('address service query error')));
   }
 
   clearSelection() {
     this.selectedFeature = null;
     this.selectedIndex = null;
+  }
+
+  private handleError<T>(operation = 'operation', result?: T) {
+    return (error: any): Observable<T> => {
+      console.error(operation, error);
+      return of(result as T);
+    };
   }
 }
