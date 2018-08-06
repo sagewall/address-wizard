@@ -1,9 +1,14 @@
 import { HttpClientTestingModule } from '@angular/common/http/testing';
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
+import { MatFormFieldModule } from '@angular/material/form-field';
+import { MatIconModule } from '@angular/material/icon';
+import { MatInputModule } from '@angular/material/input';
+import { MatListModule } from '@angular/material/list';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { DetailComponent } from '../detail/detail.component';
+import { MapComponent } from '../map/map.component';
 import { ResultsComponent } from '../results/results.component';
 import { SearchComponent } from './search.component';
-import { MapComponent } from '../map/map.component';
 
 describe('SearchComponent', () => {
   let component: SearchComponent;
@@ -17,7 +22,14 @@ describe('SearchComponent', () => {
         DetailComponent,
         MapComponent
       ],
-      imports: [HttpClientTestingModule]
+      imports: [
+        HttpClientTestingModule,
+        MatFormFieldModule,
+        MatInputModule,
+        MatIconModule,
+        MatListModule,
+        BrowserAnimationsModule
+      ]
     })
       .compileComponents();
   }));

@@ -1,4 +1,5 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
+import { MatListModule } from '@angular/material/list';
 import { MapComponent } from '../map/map.component';
 import { DetailComponent } from './detail.component';
 
@@ -11,6 +12,9 @@ describe('DetailComponent', () => {
       declarations: [
         DetailComponent,
         MapComponent
+      ],
+      imports: [
+        MatListModule
       ]
     })
       .compileComponents();

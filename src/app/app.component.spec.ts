@@ -1,5 +1,10 @@
 import { HttpClientTestingModule } from '@angular/common/http/testing';
 import { async, TestBed } from '@angular/core/testing';
+import { MatFormFieldModule } from '@angular/material/form-field';
+import { MatIconModule } from '@angular/material/icon';
+import { MatInputModule } from '@angular/material/input';
+import { MatListModule } from '@angular/material/list';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { AddressService } from './address.service';
 import { AppComponent } from './app.component';
 import { DetailComponent } from './detail/detail.component';
@@ -20,7 +25,14 @@ describe('AppComponent', () => {
       providers: [
         AddressService
       ],
-      imports: [HttpClientTestingModule]
+      imports: [
+        HttpClientTestingModule,
+        MatFormFieldModule,
+        MatInputModule,
+        MatIconModule,
+        MatListModule,
+        BrowserAnimationsModule
+      ]
     }).compileComponents();
   }));
   it('should create the app', async(() => {

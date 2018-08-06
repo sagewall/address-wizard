@@ -1,6 +1,10 @@
-<h3>Select an address</h3>
-<ul *ngIf="features">
-  <li *ngFor="let feature of features; let i = index" [class.active]="i == addressService.selectedIndex">
-    <span (click)="selectFeature(feature, i)">{{feature.attributes.ADDRESS}}</span>
-  </li>
-</ul>
+<div *ngIf="features">
+  <h3>Select an address</h3>
+
+  <mat-list role="list">
+    <mat-list-item role="listitem" class="result" *ngFor="let feature of features; let i = index" [class.active]="i == addressService.selectedIndex"
+      (click)="selectFeature(feature, i)">
+      {{feature.attributes.ADDRESS}}
+    </mat-list-item>
+  </mat-list>
+</div>

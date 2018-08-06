@@ -1,14 +1,17 @@
-<div class="container">
-  <div class="search-box container">
-    <label for="search-box">Search by House Number</label>
-    <input #searchBox id="search-box" type="number" (keyup)="search(searchBox.value)" />
+<div>
+  <div>
+    <mat-form-field appearance="outline">
+      <mat-label>House Number</mat-label>
+      <input matInput #searchBox id="search-box" type="number" placeholder="123" (keyup)="search(searchBox.value)">
+      <mat-icon matPrefix>search</mat-icon>
+    </mat-form-field>
   </div>
-  <div class="results container">
+  <div class="results">
     <div *ngIf="(featureSet$ | async) as featureSet">
       <app-results [features]="featureSet.features"></app-results>
     </div>
   </div>
-  <div class="address-detail container">
+  <div class="detail">
     <app-detail *ngIf="addressService.selectedFeature" [feature]="addressService.selectedFeature"></app-detail>
   </div>
 </div>
