@@ -26,7 +26,7 @@ export class SearchComponent implements OnInit, OnDestroy {
     return this._featureSet$;
   }
 
-  constructor(private addressService: AddressService) {
+  constructor(public addressService: AddressService) {
   }
 
   search(term: string): void {
