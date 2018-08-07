@@ -37,8 +37,8 @@ export class AddressService {
   constructor(private http: HttpClient) { }
 
   query(where: string, outFields: string, f: string, orderByFields?: string): Observable<esri.FeatureSet> {
-    let url = `${this.serviceUrl}/query?where=${encodeURIComponent(where)}&outFields=${encodeURIComponent(outFields)}
-                                          &f=${encodeURIComponent(f)}`;
+    // tslint:disable-next-line:max-line-length
+    let url = `${this.serviceUrl}/query?where=${encodeURIComponent(where)}&outFields=${encodeURIComponent(outFields)}&f=${encodeURIComponent(f)}`;
     if (orderByFields) {
       url += `&orderByFields=${orderByFields}`;
     }
