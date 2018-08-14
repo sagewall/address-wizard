@@ -18,7 +18,7 @@ export class MapComponent implements OnInit, OnChanges {
   private _spatialReferenceProperties: esri.SpatialReferenceProperties;
   private _spatialReference: esri.SpatialReference;
   private _webMap: esri.WebMap;
-  private _webMapPortalId = '413fd05bbd7342f5991d5ec96f4f8b18';
+  private _webMapPortalId = '512603d3e03f48c9b2744ef9ac3d7ea2';
   private _webMapProperties: esri.WebMapProperties;
   private _zoom = 15;
 
