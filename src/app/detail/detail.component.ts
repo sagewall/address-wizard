@@ -1,4 +1,4 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, ParamMap } from '@angular/router';
 import { Observable } from 'rxjs';
 import { switchMap } from 'rxjs/operators';
@@ -24,7 +24,6 @@ export class DetailComponent implements OnInit {
     return this._featureSet$;
   }
 
-  @Input()
   set feature(feature: esri.Graphic | Address) {
     this._feature = feature;
   }
