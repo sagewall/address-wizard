@@ -2,6 +2,7 @@ import { HttpClientModule } from '@angular/common/http';
 import { NgModule } from '@angular/core';
 import { ReactiveFormsModule } from '@angular/forms';
 import { MatAutocompleteModule } from '@angular/material/autocomplete';
+import { MatButtonModule } from '@angular/material/button';
 import { ErrorStateMatcher, ShowOnDirtyErrorStateMatcher } from '@angular/material/core';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatIconModule } from '@angular/material/icon';
@@ -32,6 +33,7 @@ import { SearchComponent } from './search/search.component';
     MatIconModule,
     MatListModule,
     MatAutocompleteModule,
+    MatButtonModule,
     AppRoutingModule,
     ReactiveFormsModule
   ],
