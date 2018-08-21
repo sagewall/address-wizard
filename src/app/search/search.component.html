@@ -1,8 +1,12 @@
-<form [formGroup]="searchGroup">
+<form [formGroup]="searchForm">
   <mat-form-field appearance="outline">
     <mat-label>House Number</mat-label>
     <input matInput #searchBox id="search-box" placeholder="123" formControlName="searchControl" [matAutocomplete]="auto" (keyup)="search(searchBox.value)">
     <mat-icon matSuffix>search</mat-icon>
+    <mat-error *ngIf="searchControl.invalid && searchControl.errors.required">Enter a <strong>house number (123)</strong>
+      for the address of interest</mat-error>
+    <mat-error *ngIf="searchControl.invalid && searchControl.errors.pattern">Only enter the <strong>house number (123)</strong>
+      for the address of interest</mat-error>
   </mat-form-field>
   <mat-autocomplete #auto="matAutocomplete">
     <mat-option *ngFor="let feature of features" [value]="feature.attributes.ADDRESS" [routerLink]="['/address', feature.attributes.ADNO]">
