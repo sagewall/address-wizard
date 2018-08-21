@@ -5,12 +5,13 @@ import { MatIconModule } from '@angular/material/icon';
 import { MatInputModule } from '@angular/material/input';
 import { MatListModule } from '@angular/material/list';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { RouterTestingModule } from '@angular/router/testing';
+import { of } from 'rxjs';
+import { AddressService } from '../address.service';
 import { DetailComponent } from '../detail/detail.component';
 import { MapComponent } from '../map/map.component';
 import { ResultsComponent } from '../results/results.component';
 import { SearchComponent } from './search.component';
-import { AddressService } from '../address.service';
-import { of } from 'rxjs';
 
 describe('SearchComponent', () => {
   let component: SearchComponent;
@@ -28,6 +29,7 @@ describe('SearchComponent', () => {
       ],
       imports: [
         HttpClientTestingModule,
+        RouterTestingModule,
         MatFormFieldModule,
         MatInputModule,
         MatIconModule,

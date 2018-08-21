@@ -1,6 +1,5 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { Address } from '../address';
-import { AddressService } from '../address.service';
 import esri = __esri;
 
 @Component({
@@ -21,14 +20,8 @@ export class ResultsComponent implements OnInit {
     return this._features;
   }
 
-  constructor(private addressService: AddressService) { }
+  constructor() { }
 
   ngOnInit() {
   }
-
-  selectFeature(feature: Address, index: number) {
-    this.addressService.selectedFeature = feature;
-    this.addressService.selectedIndex = index;
-  }
-
 }

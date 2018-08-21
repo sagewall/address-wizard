@@ -1,5 +1,7 @@
+import { HttpClientTestingModule } from '@angular/common/http/testing';
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 import { MatListModule } from '@angular/material/list';
+import { RouterTestingModule } from '@angular/router/testing';
 import { MapComponent } from '../map/map.component';
 import { DetailComponent } from './detail.component';
 
@@ -14,7 +16,9 @@ describe('DetailComponent', () => {
         MapComponent
       ],
       imports: [
-        MatListModule
+        MatListModule,
+        RouterTestingModule,
+        HttpClientTestingModule
       ]
     })
       .compileComponents();
