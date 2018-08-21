@@ -61,7 +61,7 @@ export class SearchComponent implements OnInit {
       debounceTime(300),
       distinctUntilChanged(),
       switchMap(value => {
-        return this.addressService.query(`ADRHSNO=${value}`, '*', 'json', 'ADDRESS');
+        return this.addressService.query(`ADRHSNO=${value}`, 'ADDRESS, ADNO', 'json', 'ADDRESS');
       })
     );
 
