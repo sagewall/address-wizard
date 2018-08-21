@@ -1,14 +1,12 @@
-<div>
-  <div>
-    <mat-form-field appearance="outline">
-      <mat-label>House Number</mat-label>
-      <input matInput #searchBox id="search-box" type="number" placeholder="123" (keyup)="search(searchBox.value)">
-      <mat-icon matSuffix>search</mat-icon>
-    </mat-form-field>
-  </div>
-  <div class="results">
-    <div *ngIf="(featureSet$ | async) as featureSet">
-      <app-results [features]="featureSet.features"></app-results>
-    </div>
-  </div>
-</div>
+<form [formGroup]="searchGroup">
+  <mat-form-field appearance="outline">
+    <mat-label>House Number</mat-label>
+    <input matInput #searchBox id="search-box" placeholder="123" formControlName="searchControl" [matAutocomplete]="auto" (keyup)="search(searchBox.value)">
+    <mat-icon matSuffix>search</mat-icon>
+  </mat-form-field>
+  <mat-autocomplete #auto="matAutocomplete">
+    <mat-option *ngFor="let feature of features" [value]="feature.attributes.ADDRESS" [routerLink]="['/address', feature.attributes.ADNO]">
+      {{feature.attributes.ADDRESS}}
+    </mat-option>
+  </mat-autocomplete>
+</form>

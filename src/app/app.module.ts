@@ -1,5 +1,7 @@
 import { HttpClientModule } from '@angular/common/http';
 import { NgModule } from '@angular/core';
+import { ReactiveFormsModule } from '@angular/forms';
+import { MatAutocompleteModule } from '@angular/material/autocomplete';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatIconModule } from '@angular/material/icon';
 import { MatInputModule } from '@angular/material/input';
@@ -11,14 +13,12 @@ import { AppRoutingModule } from './app-routing/app-routing.module';
 import { AppComponent } from './app.component';
 import { DetailComponent } from './detail/detail.component';
 import { MapComponent } from './map/map.component';
-import { ResultsComponent } from './results/results.component';
 import { SearchComponent } from './search/search.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     SearchComponent,
-    ResultsComponent,
     DetailComponent,
     MapComponent
   ],
@@ -30,7 +30,9 @@ import { SearchComponent } from './search/search.component';
     MatInputModule,
     MatIconModule,
     MatListModule,
-    AppRoutingModule
+    MatAutocompleteModule,
+    AppRoutingModule,
+    ReactiveFormsModule
   ],
   providers: [
     AddressService

@@ -1,5 +1,7 @@
 import { HttpClientTestingModule } from '@angular/common/http/testing';
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
+import { ReactiveFormsModule } from '@angular/forms';
+import { MatAutocompleteModule } from '@angular/material/autocomplete';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatIconModule } from '@angular/material/icon';
 import { MatInputModule } from '@angular/material/input';
@@ -10,7 +12,6 @@ import { of } from 'rxjs';
 import { AddressService } from '../address.service';
 import { DetailComponent } from '../detail/detail.component';
 import { MapComponent } from '../map/map.component';
-import { ResultsComponent } from '../results/results.component';
 import { SearchComponent } from './search.component';
 
 describe('SearchComponent', () => {
@@ -23,7 +24,6 @@ describe('SearchComponent', () => {
     TestBed.configureTestingModule({
       declarations: [
         SearchComponent,
-        ResultsComponent,
         DetailComponent,
         MapComponent
       ],
@@ -34,7 +34,9 @@ describe('SearchComponent', () => {
         MatInputModule,
         MatIconModule,
         MatListModule,
-        BrowserAnimationsModule
+        MatAutocompleteModule,
+        BrowserAnimationsModule,
+        ReactiveFormsModule
       ]
     })
       .compileComponents();

@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { FormControl, FormGroup } from '@angular/forms';
 import { Observable, Subject } from 'rxjs';
 import { debounceTime, distinctUntilChanged, switchMap } from 'rxjs/operators';
 import { AddressService } from '../address.service';
@@ -11,8 +12,13 @@ import esri = __esri;
 })
 export class SearchComponent implements OnInit {
 
+  searchGroup = new FormGroup({
+    searchControl: new FormControl()
+  });
+
   private _searchTerms = new Subject<string>();
   private _featureSet$: Observable<esri.FeatureSet>;
+  private _features;
 
   get searchTerms(): Subject<string> {
     return this._searchTerms;
@@ -24,6 +30,14 @@ export class SearchComponent implements OnInit {
 
   get featureSet$(): Observable<esri.FeatureSet> {
     return this._featureSet$;
+  }
+
+  set features(features) {
+    this._features = features;
+  }
+
+  get features() {
+    return this._features;
   }
 
   constructor(public addressService: AddressService) {
@@ -41,5 +55,7 @@ export class SearchComponent implements OnInit {
         return this.addressService.query(`ADRHSNO=${value}`, '*', 'json', 'ADDRESS');
       })
     );
+
+    this.featureSet$.subscribe(featureSet => this.features = featureSet.features);
   }
 }

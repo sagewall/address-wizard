@@ -1,9 +1,0 @@
-<div *ngIf="features">
-  <h3>Select an address</h3>
-
-  <mat-list role="list">
-    <mat-list-item role="listitem" class="result" *ngFor="let feature of features" [routerLink]="['/address', feature.attributes.ADNO]">
-      {{feature.attributes.ADDRESS}}
-    </mat-list-item>
-  </mat-list>
-</div>
