@@ -22,7 +22,7 @@
           for the address of interest</mat-error>
       </mat-form-field>
       <mat-autocomplete #auto="matAutocomplete">
-        <mat-option *ngFor="let feature of features" [value]="feature.attributes.ADDRESS" [routerLink]="['/address', feature.attributes.ADNO]">
+        <mat-option *ngFor="let feature of features" [value]="feature.attributes.ADRHSNO" [routerLink]="['/address', feature.attributes.ADNO]">
           {{feature.attributes.ADDRESS}}
         </mat-option>
         <mat-option *ngIf="features?.length === 0">Address Not Found</mat-option>
