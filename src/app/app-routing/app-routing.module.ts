@@ -9,10 +9,12 @@ const ROUTES = [
     children: [
       { path: 'search', component: SearchComponent },
       { path: ':adno', component: DetailComponent },
-      { path: '', redirectTo: 'search', pathMatch: 'full' }
+      { path: '', redirectTo: 'search', pathMatch: 'full' },
+      { path: '**', redirectTo: 'search', pathMatch: 'full' }
     ]
   },
-  { path: '', redirectTo: 'address', pathMatch: 'full' }
+  { path: '', redirectTo: 'address', pathMatch: 'full' },
+  { path: '**', redirectTo: 'address', pathMatch: 'full' }
 ];
 
 @NgModule({
