@@ -2,6 +2,7 @@ import { HttpClientTestingModule } from '@angular/common/http/testing';
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 import { ReactiveFormsModule } from '@angular/forms';
 import { MatAutocompleteModule } from '@angular/material/autocomplete';
+import { MatCardModule } from '@angular/material/card';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatIconModule } from '@angular/material/icon';
 import { MatInputModule } from '@angular/material/input';
@@ -35,6 +36,7 @@ describe('SearchComponent', () => {
         MatIconModule,
         MatListModule,
         MatAutocompleteModule,
+        MatCardModule,
         BrowserAnimationsModule,
         ReactiveFormsModule
       ]
@@ -61,6 +63,5 @@ describe('SearchComponent', () => {
     addressService.query(`ADRHSNO=${value}`, '*', 'json', 'ADDRESS');
     // tslint:disable-next-line:max-line-length
     expect(mockHttp.get).toHaveBeenCalledWith('https://mapservices1.jeffco.us/arcgis/rest/services/AddressWizard/AddressWizard/MapServer/1/query?where=ADRHSNO%3D123&outFields=*&f=json&orderByFields=ADDRESS');
-
   });
 });

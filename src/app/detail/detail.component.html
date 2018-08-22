@@ -1,49 +1,56 @@
 <div *ngIf="feature">
-  <a mat-flat-button routerLink="/address/search">Return to search</a>
-  <h3>{{feature.attributes.ADDRESS}}</h3>
-  <mat-list>
-    <mat-list-item>
-        <h4 matLine>Address</h4>
-        <div matLine class="address">
-          <div matLine>{{feature.attributes.ADDRESS}}</div>
-          <div matLine>{{feature.attributes.CITY_POSTAL}}, CO {{feature.attributes.ZIP}}</div>
-        </div>
-    </mat-list-item>
-    <mat-list-item>
-        <h4 matLine>Municipal Elections</h4>
-        <div matLine>Municipality: {{feature.attributes.CITY_MUNICIPAL}}</div>
-        <div matLine *ngIf="feature.attributes.CITY_MUNICIPAL != 'UNINCORPORATED'">
-          <div matLine *ngIf="feature.attributes.CITYPRECINCT != '00'">City Precinct: {{feature.attributes.CITYPRECINCT}}</div>
-          <div matLine *ngIf="feature.attributes.CITYWARD != '00'">City Ward: {{feature.attributes.CITYWARD}}</div>
-        </div>
-    </mat-list-item>
-    <mat-list-item>
-        <h4 matLine>County Elections</h4>
-        <div matLine>County Precinct: {{feature.attributes.COUNTYPRECINCT}}</div>
-        <div matLine>County Commissioner (District {{feature.attributes.COMM_DISTRICT}}): {{feature.attributes.COMM_NAME}}
-        </div>
-    </mat-list-item>
-    <mat-list-item>
-        <h4 matLine>State Elections</h4>
-        <div matLine>State House Representative (District {{feature.attributes.STHSE_DISTRICT}}): {{feature.attributes.STHSE_NAME}}
-        </div>
-        <div matLine>State Senator (District {{feature.attributes.STSEN_DISTRICT}}): {{feature.attributes.STSEN_NAME}}
-        </div>
-    </mat-list-item>
-    <mat-list-item>
-        <h4 matLine>US Elections</h4>
-        <div matLine>US House Representative (District {{feature.attributes.FDHSE_DISTRICT}}): {{feature.attributes.FDHSE_NAME}}
-        </div>
-    </mat-list-item>
-  </mat-list>
+  <a mat-raised-button color="primary" routerLink="/address/search">Return to search</a>
+  <mat-card class="card">
+    <mat-card-title>{{feature.attributes.ADDRESS | titlecase}}</mat-card-title>
+    <mat-card-content>
+      <mat-list>
+        <mat-list-item>
+          <h3 matLine>Address</h3>
+          <div matLine class="address">
+            <div matLine>{{feature.attributes.ADDRESS | titlecase}}</div>
+            <div matLine>{{feature.attributes.CITY_POSTAL | titlecase}}, CO {{feature.attributes.ZIP}}</div>
+          </div>
+        </mat-list-item>
+        <mat-list-item>
+          <h4 matLine>Municipal Elections</h4>
+          <div matLine>Municipality: {{feature.attributes.CITY_MUNICIPAL | titlecase}}</div>
+          <div matLine *ngIf="feature.attributes.CITY_MUNICIPAL != 'UNINCORPORATED'">
+            <div matLine *ngIf="feature.attributes.CITYPRECINCT != '00'">City Precinct: {{feature.attributes.CITYPRECINCT}}</div>
+            <div matLine *ngIf="feature.attributes.CITYWARD != '00'">City Ward: {{feature.attributes.CITYWARD}}</div>
+          </div>
+        </mat-list-item>
+        <mat-list-item>
+          <h3 matLine>County Elections</h3>
+          <div matLine>County Precinct: {{feature.attributes.COUNTYPRECINCT}}</div>
+          <div matLine>County Commissioner (District {{feature.attributes.COMM_DISTRICT}}): {{feature.attributes.COMM_NAME}}
+          </div>
+        </mat-list-item>
+        <mat-list-item>
+          <h3 matLine>State Elections</h3>
+          <div matLine>State House Representative (District {{feature.attributes.STHSE_DISTRICT}}): {{feature.attributes.STHSE_NAME}}
+          </div>
+          <div matLine>State Senator (District {{feature.attributes.STSEN_DISTRICT}}): {{feature.attributes.STSEN_NAME}}
+          </div>
+        </mat-list-item>
+        <mat-list-item>
+          <h3 matLine>US Elections</h3>
+          <div matLine>US House Representative (District {{feature.attributes.FDHSE_DISTRICT}}): {{feature.attributes.FDHSE_NAME}}
+          </div>
+        </mat-list-item>
+      </mat-list>
+    </mat-card-content>
+  </mat-card>
 
-  <div class="geographic">
-    <h4>Geographic Coordinates</h4>
-    <div>-{{feature.attributes.LONGITUDE | number:'3.3-3'}}&deg;, {{feature.attributes.LATITUDE | number:'2.3-3'}}‌&deg;, {{feature.attributes.ADRELEV}}
+  <mat-card class="card">
+    <mat-card-title>Map</mat-card-title>
+    <mat-card-subtitle>
+      -{{feature.attributes.LONGITUDE | number:'3.3-3'}}&deg;, {{feature.attributes.LATITUDE | number:'2.3-3'}}‌&deg;, {{feature.attributes.ADRELEV}}
       ft.
-    </div>
-    <div class="map-view">
+    </mat-card-subtitle>
+    <mat-card-content>
+      <div class="map-view">
         <app-map [webMapPortalId]="'512603d3e03f48c9b2744ef9ac3d7ea2'" [feature]="feature" [zoom]="15"></app-map>
       </div>
-  </div>
+    </mat-card-content>
+  </mat-card>
 </div>

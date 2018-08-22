@@ -2,6 +2,7 @@ import { HttpClientTestingModule } from '@angular/common/http/testing';
 import { async, TestBed } from '@angular/core/testing';
 import { ReactiveFormsModule } from '@angular/forms';
 import { MatAutocompleteModule } from '@angular/material/autocomplete';
+import { MatCardModule } from '@angular/material/card';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatIconModule } from '@angular/material/icon';
 import { MatInputModule } from '@angular/material/input';
@@ -33,6 +34,7 @@ describe('AppComponent', () => {
         MatIconModule,
         MatListModule,
         MatAutocompleteModule,
+        MatCardModule,
         BrowserAnimationsModule,
         RouterTestingModule,
         ReactiveFormsModule
@@ -44,15 +46,15 @@ describe('AppComponent', () => {
     const app = fixture.debugElement.componentInstance;
     expect(app).toBeTruthy();
   }));
-  it(`should have as title 'address-wizard'`, async(() => {
+  it(`should have as title 'Address Wizard'`, async(() => {
     const fixture = TestBed.createComponent(AppComponent);
     const app = fixture.debugElement.componentInstance;
-    expect(app.title).toEqual('address-wizard');
+    expect(app.title).toEqual('Address Wizard');
   }));
-  it('should render title in a h1 tag', async(() => {
+  it('should render title in a header', async(() => {
     const fixture = TestBed.createComponent(AppComponent);
     fixture.detectChanges();
     const compiled = fixture.debugElement.nativeElement;
-    expect(compiled.querySelector('h1').textContent).toContain('Welcome to address-wizard!');
+    expect(compiled.querySelector('header').textContent).toContain('Address Wizard');
   }));
 });

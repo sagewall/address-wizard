@@ -1,7 +1,18 @@
 @import url('https://js.arcgis.com/4.8/esri/css/main.css')
 @import url('https://fonts.googleapis.com/icon?family=Material+Icons')
 @import url('https://fonts.googleapis.com/css?family=Roboto:300,400,500')
-@import '~@angular/material/prebuilt-themes/indigo-pink.css'
+
+@import '~@angular/material/theming';
+@include mat-core();
+$address-app-primary: mat-palette($mat-blue);
+$address-app-accent: mat-palette($mat-green);
+$address-app-warn: mat-palette($mat-red);
+$address-app-theme: mat-light-theme($address-app-primary, $address-app-accent, $address-app-warn);
+@include angular-material-theme($address-app-theme);
 
 body
   margin: 0
+
+.card
+  background: mat-color($address-app-accent, 50)
+  margin: 1em 0
