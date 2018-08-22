@@ -1,40 +1,40 @@
-<div *ngIf="feature">
+<div *ngIf="address">
   <a mat-raised-button color="primary" routerLink="/address/search">Return to search</a>
   <mat-card class="card">
-    <mat-card-title>{{feature.attributes.ADDRESS | titlecase}}</mat-card-title>
+    <mat-card-title>{{address.attributes.ADDRESS | titlecase}}</mat-card-title>
     <mat-card-content>
       <mat-list>
         <mat-list-item>
           <h3 matLine>Address</h3>
           <div matLine class="address">
-            <div matLine>{{feature.attributes.ADDRESS | titlecase}}</div>
-            <div matLine>{{feature.attributes.CITY_POSTAL | titlecase}}, CO {{feature.attributes.ZIP}}</div>
+            <div matLine>{{address.attributes.ADDRESS | titlecase}}</div>
+            <div matLine>{{address.attributes.CITY_POSTAL | titlecase}}, CO {{address.attributes.ZIP}}</div>
           </div>
         </mat-list-item>
         <mat-list-item>
           <h4 matLine>Municipal Elections</h4>
-          <div matLine>Municipality: {{feature.attributes.CITY_MUNICIPAL | titlecase}}</div>
-          <div matLine *ngIf="feature.attributes.CITY_MUNICIPAL != 'UNINCORPORATED'">
-            <div matLine *ngIf="feature.attributes.CITYPRECINCT != '00'">City Precinct: {{feature.attributes.CITYPRECINCT}}</div>
-            <div matLine *ngIf="feature.attributes.CITYWARD != '00'">City Ward: {{feature.attributes.CITYWARD}}</div>
+          <div matLine>Municipality: {{address.attributes.CITY_MUNICIPAL | titlecase}}</div>
+          <div matLine *ngIf="address.attributes.CITY_MUNICIPAL != 'UNINCORPORATED'">
+            <div matLine *ngIf="address.attributes.CITYPRECINCT != '00'">City Precinct: {{address.attributes.CITYPRECINCT}}</div>
+            <div matLine *ngIf="address.attributes.CITYWARD != '00'">City Ward: {{address.attributes.CITYWARD}}</div>
           </div>
         </mat-list-item>
         <mat-list-item>
           <h3 matLine>County Elections</h3>
-          <div matLine>County Precinct: {{feature.attributes.COUNTYPRECINCT}}</div>
-          <div matLine>County Commissioner (District {{feature.attributes.COMM_DISTRICT}}): {{feature.attributes.COMM_NAME}}
+          <div matLine>County Precinct: {{address.attributes.COUNTYPRECINCT}}</div>
+          <div matLine>County Commissioner (District {{address.attributes.COMM_DISTRICT}}): {{address.attributes.COMM_NAME}}
           </div>
         </mat-list-item>
         <mat-list-item>
           <h3 matLine>State Elections</h3>
-          <div matLine>State House Representative (District {{feature.attributes.STHSE_DISTRICT}}): {{feature.attributes.STHSE_NAME}}
+          <div matLine>State House Representative (District {{address.attributes.STHSE_DISTRICT}}): {{address.attributes.STHSE_NAME}}
           </div>
-          <div matLine>State Senator (District {{feature.attributes.STSEN_DISTRICT}}): {{feature.attributes.STSEN_NAME}}
+          <div matLine>State Senator (District {{address.attributes.STSEN_DISTRICT}}): {{address.attributes.STSEN_NAME}}
           </div>
         </mat-list-item>
         <mat-list-item>
           <h3 matLine>US Elections</h3>
-          <div matLine>US House Representative (District {{feature.attributes.FDHSE_DISTRICT}}): {{feature.attributes.FDHSE_NAME}}
+          <div matLine>US House Representative (District {{address.attributes.FDHSE_DISTRICT}}): {{address.attributes.FDHSE_NAME}}
           </div>
         </mat-list-item>
       </mat-list>
@@ -44,12 +44,12 @@
   <mat-card class="card">
     <mat-card-title>Map</mat-card-title>
     <mat-card-subtitle>
-      -{{feature.attributes.LONGITUDE | number:'3.3-3'}}&deg;, {{feature.attributes.LATITUDE | number:'2.3-3'}}‌&deg;, {{feature.attributes.ADRELEV}}
+      -{{address.attributes.LONGITUDE | number:'3.3-3'}}&deg;, {{address.attributes.LATITUDE | number:'2.3-3'}}‌&deg;, {{address.attributes.ADRELEV}}
       ft.
     </mat-card-subtitle>
     <mat-card-content>
       <div class="map-view">
-        <app-map [webMapPortalId]="'512603d3e03f48c9b2744ef9ac3d7ea2'" [feature]="feature" [zoom]="15"></app-map>
+        <app-map [webMapPortalId]="'512603d3e03f48c9b2744ef9ac3d7ea2'" [feature]="address" [zoom]="15"></app-map>
       </div>
     </mat-card-content>
   </mat-card>

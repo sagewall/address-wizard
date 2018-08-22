@@ -1,10 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute, ParamMap } from '@angular/router';
-import { Observable } from 'rxjs';
-import { switchMap } from 'rxjs/operators';
+import { ActivatedRoute } from '@angular/router';
 import { Address } from '../address';
-import { AddressService } from '../address.service';
-import esri = __esri;
 
 @Component({
   selector: 'app-detail',
@@ -13,38 +9,21 @@ import esri = __esri;
 })
 export class DetailComponent implements OnInit {
 
-  private _featureSet$: Observable<esri.FeatureSet>;
-  private _feature: esri.Graphic | Address;
+  private _address: Address;
 
-  set featureSet$(featureSet: Observable<esri.FeatureSet>) {
-    this._featureSet$ = featureSet;
+  set address(feature: Address) {
+    this._address = feature;
   }
 
-  get featureSet$(): Observable<esri.FeatureSet> {
-    return this._featureSet$;
+  get address(): Address {
+    return this._address;
   }
 
-  set feature(feature: esri.Graphic | Address) {
-    this._feature = feature;
-  }
-
-  get feature(): esri.Graphic | Address {
-    return this._feature;
-  }
-
-  constructor(
-    private route: ActivatedRoute,
-    private addressService: AddressService
-  ) { }
+  constructor(private route: ActivatedRoute) { }
 
   ngOnInit() {
-    this.featureSet$ = this.route.paramMap.pipe(
-      switchMap((params: ParamMap) => {
-        return this.addressService.query(`ADNO=${params.get('adno')}`, '*', 'json', 'ADNO');
-      })
-    );
-
-    this.featureSet$.subscribe(featureSet => this.feature = featureSet.features[0]);
+    this.route.data.subscribe((data: { address: Address }) => {
+      this.address = data.address;
+    });
   }
-
 }
