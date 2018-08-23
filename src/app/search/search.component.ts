@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { FormControl, FormGroup, Validators } from '@angular/forms';
+import { FormControl, FormGroup, Validators, AbstractControl } from '@angular/forms';
 import { Observable, Subject } from 'rxjs';
 import { debounceTime, distinctUntilChanged, switchMap } from 'rxjs/operators';
 import { AddressService } from '../address.service';
@@ -18,7 +18,7 @@ export class SearchComponent implements OnInit {
   private _featureSet$: Observable<esri.FeatureSet>;
   private _features;
 
-  get searchControl() {
+  get searchControl(): AbstractControl {
     return this.searchForm.get('searchControl');
   }
 
@@ -34,11 +34,11 @@ export class SearchComponent implements OnInit {
     return this._featureSet$;
   }
 
-  set features(features) {
+  set features(features: esri.Graphic[]) {
     this._features = features;
   }
 
-  get features() {
+  get features(): esri.Graphic[] {
     return this._features;
   }
 
@@ -65,6 +65,12 @@ export class SearchComponent implements OnInit {
       })
     );
 
-    this.featureSet$.subscribe(featureSet => this.features = featureSet.features);
+    this.featureSet$.subscribe(featureSet => {
+      if (!featureSet) {
+        return this.features = [];
+      } else {
+        return this.features = featureSet.features;
+      }
+    });
   }
 }
