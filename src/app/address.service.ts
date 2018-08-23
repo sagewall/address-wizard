@@ -2,6 +2,7 @@ import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable, of } from 'rxjs';
 import { catchError } from 'rxjs/operators';
+import { environment } from '../environments/environment';
 import esri = __esri;
 
 @Injectable({
@@ -9,7 +10,7 @@ import esri = __esri;
 })
 export class AddressService {
 
-  private _serviceUrl = 'https://mapservices1.jeffco.us/arcgis/rest/services/AddressWizard/AddressWizard/MapServer/1';
+  private _serviceUrl = environment.addressServiceUrl;
 
   get serviceUrl(): string {
     return this._serviceUrl;
