@@ -3,6 +3,7 @@ import { RouterModule } from '@angular/router';
 import { DetailResolverService } from '../detail-resolver.service';
 import { DetailComponent } from '../detail/detail.component';
 import { SearchComponent } from '../search/search.component';
+import { HomeComponent } from '../home/home.component';
 
 const ROUTES = [
   {
@@ -14,8 +15,9 @@ const ROUTES = [
       { path: '**', redirectTo: 'search', pathMatch: 'full' }
     ]
   },
-  { path: '', redirectTo: 'address', pathMatch: 'full' },
-  { path: '**', redirectTo: 'address', pathMatch: 'full' }
+  { path: 'home', component: HomeComponent },
+  { path: '', redirectTo: '/home', pathMatch: 'full' },
+  { path: '**', redirectTo: '/home', pathMatch: 'full' }
 ];
 
 @NgModule({

@@ -15,6 +15,7 @@ import { AddressService } from './address.service';
 import { AppRoutingModule } from './app-routing/app-routing.module';
 import { AppComponent } from './app.component';
 import { DetailComponent } from './detail/detail.component';
+import { HomeComponent } from './home/home.component';
 import { MapComponent } from './map/map.component';
 import { SearchComponent } from './search/search.component';
 
@@ -23,7 +24,8 @@ import { SearchComponent } from './search/search.component';
     AppComponent,
     SearchComponent,
     DetailComponent,
-    MapComponent
+    MapComponent,
+    HomeComponent
   ],
   imports: [
     BrowserModule,
