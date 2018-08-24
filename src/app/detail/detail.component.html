@@ -1,5 +1,6 @@
 <div *ngIf="address">
-  <a mat-raised-button color="primary" routerLink="/address/search">Return to search</a>
+  <a mat-raised-button color="primary" routerLink="/home">Home</a>
+  <app-search></app-search>
   <mat-card class="card">
     <mat-card-title>{{address.attributes.ADDRESS | titlecase}}</mat-card-title>
     <mat-card-content>
