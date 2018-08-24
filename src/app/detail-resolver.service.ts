@@ -21,7 +21,7 @@ export class DetailResolverService implements Resolve<esri.Graphic> {
         if (featureSet.features && featureSet.features.length === 1) {
           return featureSet.features[0];
         } else {
-          this.router.navigate(['/address/search']);
+          this.router.navigate(['/address/error']);
           return null;
         }
       })

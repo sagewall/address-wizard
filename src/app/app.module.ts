@@ -14,6 +14,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { AddressService } from './address.service';
 import { AppRoutingModule } from './app-routing/app-routing.module';
 import { AppComponent } from './app.component';
+import { DetailErrorComponent } from './detail-error/detail-error.component';
 import { DetailComponent } from './detail/detail.component';
 import { HomeComponent } from './home/home.component';
 import { MapComponent } from './map/map.component';
@@ -25,7 +26,8 @@ import { SearchComponent } from './search/search.component';
     SearchComponent,
     DetailComponent,
     MapComponent,
-    HomeComponent
+    HomeComponent,
+    DetailErrorComponent
   ],
   imports: [
     BrowserModule,
