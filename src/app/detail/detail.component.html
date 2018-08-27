@@ -1,44 +1,75 @@
 <div *ngIf="address">
   <a mat-raised-button color="primary" routerLink="/home">Home</a>
   <app-search></app-search>
+
   <mat-card class="card">
-    <mat-card-title>{{address.attributes.ADDRESS | titlecase}}</mat-card-title>
+    <mat-card-title>Address</mat-card-title>
     <mat-card-content>
-      <mat-list>
-        <mat-list-item>
-          <h3 matLine>Address</h3>
-          <div matLine class="address">
-            <div matLine>{{address.attributes.ADDRESS | titlecase}}</div>
-            <div matLine>{{address.attributes.CITY_POSTAL | titlecase}}, CO {{address.attributes.ZIP}}</div>
-          </div>
-        </mat-list-item>
-        <mat-list-item>
-          <h4 matLine>Municipal Elections</h4>
-          <div matLine>Municipality: {{address.attributes.CITY_MUNICIPAL | titlecase}}</div>
-          <div matLine *ngIf="address.attributes.CITY_MUNICIPAL != 'UNINCORPORATED'">
-            <div matLine *ngIf="address.attributes.CITYPRECINCT != '00'">City Precinct: {{address.attributes.CITYPRECINCT}}</div>
-            <div matLine *ngIf="address.attributes.CITYWARD != '00'">City Ward: {{address.attributes.CITYWARD}}</div>
-          </div>
-        </mat-list-item>
-        <mat-list-item>
-          <h3 matLine>County Elections</h3>
-          <div matLine>County Precinct: {{address.attributes.COUNTYPRECINCT}}</div>
-          <div matLine>County Commissioner (District {{address.attributes.COMM_DISTRICT}}): {{address.attributes.COMM_NAME}}
-          </div>
-        </mat-list-item>
-        <mat-list-item>
-          <h3 matLine>State Elections</h3>
-          <div matLine>State House Representative (District {{address.attributes.STHSE_DISTRICT}}): {{address.attributes.STHSE_NAME}}
-          </div>
-          <div matLine>State Senator (District {{address.attributes.STSEN_DISTRICT}}): {{address.attributes.STSEN_NAME}}
-          </div>
-        </mat-list-item>
-        <mat-list-item>
-          <h3 matLine>US Elections</h3>
-          <div matLine>US House Representative (District {{address.attributes.FDHSE_DISTRICT}}): {{address.attributes.FDHSE_NAME}}
-          </div>
-        </mat-list-item>
-      </mat-list>
+      <div>{{address.attributes.ADDRESS | titlecase}}</div>
+      <div>{{address.attributes.CITY_POSTAL | titlecase}}, CO {{address.attributes.ZIP}}</div>
+      <div>
+        <a mat-raised-button color="accent" href="https://propertysearch.jeffco.us/propertyrecordssearch/pin?pin={{address.attributes.AUMENTUM_PIN}}">
+          Property Data</a>
+        <a mat-raised-button color="accent" href="https://ttps.jeffco.us/ASPX/TaxPayView?schedule={{address.attributes.AUMENTUM_PIN}}">
+          Tax Data</a>
+      </div>
+    </mat-card-content>
+  </mat-card>
+
+  <mat-card class="card">
+    <mat-card-title>Geographic Data</mat-card-title>
+    <mat-card-content>
+      <div>Public Land Survey System: Township {{address.attributes.PLSS_TWN}}S Range {{address.attributes.PLSS_RNG}}W, Section
+        {{address.attributes.PLSS_SEC}}
+      </div>
+      <div>Latitude and Logitude: {{address.attributes.LATITUDE | number:'2.3-3'}}&deg;N, {{address.attributes.LONGITUDE | number:'3.3-3'}}&deg;W</div>
+      <div>Colorado State Plane (Central) Coordinates: {{address.attributes.ADRX}}, {{address.attributes.ADRY}}</div>
+      <div>Elevation: {{address.attributes.ADRELEV}}ft</div>
+      <div>Snow Load Factor (Roof): {{address.attributes.SNF_ROOF}}</div>
+      <div>Snow Load Factor (Ground): {{address.attributes.SNF_GROUND}}</div>
+    </mat-card-content>
+  </mat-card>
+
+  <mat-card class="card">
+    <mat-card-title>Municipal Elections</mat-card-title>
+    <mat-card-content>
+      <div>Municipality: {{address.attributes.CITY_MUNICIPAL | titlecase}}</div>
+      <div *ngIf="address.attributes.CITY_MUNICIPAL != 'UNINCORPORATED'">
+        <div *ngIf="address.attributes.CITYPRECINCT != '00'">City Precinct: {{address.attributes.CITYPRECINCT}}</div>
+        <div *ngIf="address.attributes.CITYWARD != '00'">City Ward: {{address.attributes.CITYWARD}}</div>
+      </div>
+    </mat-card-content>
+  </mat-card>
+
+  <mat-card class="card">
+    <mat-card-title>County Elections</mat-card-title>
+    <mat-card-content>
+      <div>County Precinct: {{address.attributes.COUNTYPRECINCT}}</div>
+      <div>Assessor: {{address.attributes.ASSESSOR}}</div>
+      <div>Clerk and Recorder: {{address.attributes.CLERK}}</div>
+      <div>Commissioner Residing in District {{address.attributes.COMM_DISTRICT}}: {{address.attributes.COMM_NAME}}</div>
+      <div>Commissioners: {{address.attributes.COMMISSIONERS}}</div>
+      <div>Coroner: {{address.attributes.CORONER}}</div>
+      <div>District Attorney: {{address.attributes.DISTRICTATTORNEY}}</div>
+      <div>Sheriff: {{address.attributes.SHERIFF}}</div>
+      <div>Treasurer: {{address.attributes.TREASURER}}</div>
+    </mat-card-content>
+  </mat-card>
+
+  <mat-card class="card">
+    <mat-card-title>State Elections</mat-card-title>
+    <mat-card-content>
+      <div>State House Representative (District {{address.attributes.STHSE_DISTRICT}}): {{address.attributes.STHSE_NAME}}
+      </div>
+      <div>State Senator (District {{address.attributes.STSEN_DISTRICT}}): {{address.attributes.STSEN_NAME}}</div>
+    </mat-card-content>
+  </mat-card>
+
+  <mat-card class="card">
+    <mat-card-title>US Elections</mat-card-title>
+    <mat-card-content>
+      <div>US House Representative (District {{address.attributes.FDHSE_DISTRICT}}): {{address.attributes.FDHSE_NAME}}</div>
+      <div>US Senators: {{address.attributes.US_SENATORS}}</div>
     </mat-card-content>
   </mat-card>
 
